@@ -251,6 +251,9 @@ void Keeper::keep_s_a_p_delete(int id, int del_number) {
 		//cout << "id == 3" << endl;
 		Conf.conf_pr_del(del_number);
 	}
+	if (id == 4) {
+		Conf.setName("");
+	}
 }
 
 void Keeper::keep_s_a_p_edit(int id, int number) {

@@ -163,13 +163,16 @@ void Conference::conf_sp_del(int del_numb) {
 	{
 		s_buf[i] = s_pointer[i];
 	}
-	s_pointer = new Speakers[s_numb-1];
-	for (int j = 0; j < s_numb-1; j++)
-	{
-		if (j < del_numb-1) s_pointer[j] = s_buf[j];
-		else s_pointer[j] = s_buf[j + 1];
+	if (s_numb != 0) {
+		s_pointer = new Speakers[s_numb - 1];
+		for (int j = 0; j < s_numb - 1; j++)
+		{
+			if (j < del_numb - 1) s_pointer[j] = s_buf[j];
+			else s_pointer[j] = s_buf[j + 1];
+		}
+		s_numb--;
 	}
-	s_numb--;
+	//else delete s_pointer;
 }
 //удаление администратора
 void Conference::conf_adm_del(int del_numb) {
@@ -179,13 +182,16 @@ void Conference::conf_adm_del(int del_numb) {
 	{
 		a_buf[i] = a_pointer[i];
 	}
-	a_pointer = new Administration[a_numb - 1];
-	for (int j = 0; j < a_numb - 1; j++)
-	{
-		if (j < del_numb - 1) a_pointer[j] = a_buf[j];
-		else a_pointer[j] = a_buf[j + 1];
+	if (a_numb != 0) {
+		a_pointer = new Administration[a_numb - 1];
+		for (int j = 0; j < a_numb - 1; j++)
+		{
+			if (j < del_numb - 1) a_pointer[j] = a_buf[j];
+			else a_pointer[j] = a_buf[j + 1];
+		}
+		a_numb--;
 	}
-	a_numb--;
+	//else delete a_pointer;
 }
 //удаление блока программы
 void Conference::conf_pr_del(int del_numb) {
@@ -195,13 +201,16 @@ void Conference::conf_pr_del(int del_numb) {
 	{
 		p_buf[i] = p_pointer[i];
 	}
-	p_pointer = new Program[p_numb - 1];
-	for (int j = 0; j < p_numb - 1; j++)
-	{
-		if (j < del_numb - 1) p_pointer[j] = p_buf[j];
-		else p_pointer[j] = p_buf[j + 1];
+	if (p_numb != 0) {
+		p_pointer = new Program[p_numb - 1];
+		for (int j = 0; j < p_numb - 1; j++)
+		{
+			if (j < del_numb - 1) p_pointer[j] = p_buf[j];
+			else p_pointer[j] = p_buf[j + 1];
+		}
+		p_numb--;
 	}
-	p_numb--;
+	//else delete p_pointer;
 }
 
 //добавление выступающего
@@ -314,7 +323,5 @@ void Conference::conf_add() {
 			cout << "  Добавить ещё один блок программы?" << endl << "    1. Да" << endl << "    0. Нет" << endl << "    >> ";
 			input = selection(0, 1);
 		}
-	
 	} 
-
 }

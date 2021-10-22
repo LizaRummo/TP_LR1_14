@@ -299,6 +299,8 @@ void print_Menu_X() {
 	cout << "  5. Экспорт данных" << endl;
 	cout << "  ---" << endl;
 	cout << "  6. Изменить навание конференции" << endl;
+	cout << "  7. Очистить конференцию" << endl;
+	cout << "  8. Вывести данные конференции на экран" << endl;
 	cout << "  ---" << endl;
 	cout << "  0. Выход из программы" << endl;
 	cout << "  >> ";
@@ -357,14 +359,17 @@ int Menu_XX(int type) {
 		break;
 		case 4:
 		{
-			keep.keep_s_a_p_full_output(type);
-			cout << "Удалить запись" << endl << "  >>";
-			int del_number = selection(1, keep.keep_s_a_p_numb(type));
-			keep.keep_s_a_p_delete(type, del_number);
-			cout << "Обновлённый список:" << endl;
-			keep.keep_s_a_p_full_output(type);
+			if (keep.keep_s_a_p_numb(type) > 0) {
+				keep.keep_s_a_p_full_output(type);
+				cout << "Удалить запись" << endl << "  >>";
+				int del_number = selection(1, keep.keep_s_a_p_numb(type));
+				keep.keep_s_a_p_delete(type, del_number);
+				cout << "Обновлённый список:" << endl;
+				keep.keep_s_a_p_full_output(type);
+			}
+			else cout << "Недостаточно записей для удаления" << endl;
 			cout << "Нажмите любую клавишу, чтобы продолжить..." << endl;
-			cin.get();
+			cin.get(); cin.get();
 		}
 		break;
 		case 0:
@@ -377,7 +382,7 @@ void Menu_X() {
 	int point;
 	while (1) {
 		print_Menu_X();
-		switch (point = selection(0, 6)) {
+		switch (point = selection(0, 8)) {
 		case 1:
 		{
 			Menu_XX(point);
@@ -412,6 +417,27 @@ void Menu_X() {
 		{
 			//сменить название конфы
 			keep.keep_s_a_p_edit(4, 0);
+		}
+		break;
+		case 7:
+		{
+			for (int i = 1; i < 4; i++) {
+				int numb = keep.keep_s_a_p_numb(i);
+				for (int j = numb; j >= 1; j--) {
+					keep.keep_s_a_p_delete(i, j);
+				}
+			}
+			keep.keep_s_a_p_delete(4,0);
+		}
+		break;
+		case 8:
+		{
+			for (int i = 1; i < 4; i++) {
+				keep.keep_s_a_p_full_output(i);
+				cout << endl;
+			}
+			cout << "Нажмите любую клавишу, чтобы продолжить..." << endl;
+			cin.get(); cin.get();
 		}
 		break;
 		case 0:
