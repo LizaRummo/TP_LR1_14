@@ -15,15 +15,19 @@ public:
 	Administration() : name("not set"), position("not set"), responsibility("not set") { cout << "Administration()" << endl; }
 	Administration(string a_name, string a_position, string a_responsibility) :
 		name(a_name), position(a_position), responsibility(a_responsibility) {
-		cout << "Administration(...)" << endl; a_input();
+		cout << "Administration(...)" << endl; 
 	}
-	//деструктор ещё
+	Administration(const Administration& Adm) {
+		cout << "Administration(copy)" << endl;
+		name = Adm.name;
+		position = Adm.position;
+		responsibility = Adm.responsibility;
+	}
+
+	~Administration() { cout << "~Administration()" << endl; }
 
 	void a_input();		//ввод с консоли
 	void a_output();	//вывод в консоль
-	// a_edit();		//редактирование данных администраторов
-	// a_add();			//добавление администратора
-	// a_delete();		//удаление администратора
 
 	string getName() { return name; }
 	string getPosition() { return position; }

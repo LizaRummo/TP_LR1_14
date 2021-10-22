@@ -15,15 +15,18 @@ public:
 	Program() : day("not set"), time("not set"), topic("not set") { cout << "Program()" << endl; }
 	Program(string p_day, string p_time, string p_topic) :
 		day(p_day), time(p_time), topic(p_topic) {
-		cout << "Program(...)" << endl; p_input();
+		cout << "Program(...)" << endl; 
 	}
-	//деструктор ещё
+	Program(const Program& Pr) {
+		cout << "Program(copy)" << endl;
+		day = Pr.day;
+		time = Pr.time;
+		topic = Pr.topic;
+	}
+	~Program() { cout << "~Program()" << endl; }
 
 	void p_input();		//ввод с консоли
 	void p_output();	//вывод в консоль
-	// p_edit();		//редактирование данных программы
-	// p_add();			//добавление элемента программы
-	// p_delete();		//удаление элемента программы
 
 	string getDay() { return day; }
 	string getTime() { return time; }

@@ -20,18 +20,7 @@ public:
 	void keep_s_a_p_edit(int id, int number);
 	//void keep_sort(int id);
 
-	//void keep_sp_add();		//добавление спикера
-	//void keep_sp_full_output();
-	//int getS_numb() { return s_numb; }
-	//void keep_adm_add();
-	//void keep_adm_full_output();
-	//void keep_pr_add();
-	//void keep_pr_full_output();
-
 	string keep_getName_of_conf();
 	int keep_s_a_p_numb(int id);
-	int keep_getS_numb();
-	int keep_getA_numb();
-	int keep_getP_numb();
 };
 

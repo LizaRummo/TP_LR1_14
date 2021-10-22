@@ -17,7 +17,10 @@ class Conference
 	int p_numb;
 public:
 	Conference() : name("not set"), s_pointer(nullptr), s_numb(0), a_pointer(nullptr), a_numb(0), p_pointer(nullptr), p_numb(0) { cout << "Conference()" << endl; }
-
+	Conference(string name, Speakers* s_pointer, int s_numb, Administration* a_pointer, int a_numb, Program* p_pointer, int p_numb) :
+		name(name), s_pointer(s_pointer), s_numb(s_numb), a_pointer(a_pointer), a_numb(a_numb), p_pointer(p_pointer), p_numb(p_numb){
+		cout << "Conference(...)" << endl;
+	}
 	//конструктор копирования
 	Conference(const Conference& Conf) {
 		cout << "Conference(copy)" << endl;

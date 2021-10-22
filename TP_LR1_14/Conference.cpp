@@ -1,5 +1,8 @@
 #include "Conference.h"
 
+string checkNames(string input);
+string checkDate();
+string checkTime();
 int selection(int first, int last);
 
 Conference& Conference::operator=(const Conference& Conf)
@@ -102,10 +105,12 @@ void Conference::conf_sp_edit(int numb) {
 	cout << "  [Редактирование данных выступающего]" << endl << "  [Если поле не требуется редактировать - оставьте его пустым и нажмите enter]" << endl << "    ФИО: ";
 	getline(cin, name);	//???
 	getline(cin, name);
+	name = checkNames(name);
 	if (name != empty)	s_pointer[numb-1].setName(name);
 	//проверка на только буквы ?
 	cout << "    Организация/ВУЗ: ";
 	getline(cin, organization);
+	organization = checkNames(organization);
 	if (organization != empty)	s_pointer[numb-1].setOrganization(organization);
 	cout << "    Тема доклада: ";
 	getline(cin, topic);
@@ -122,8 +127,8 @@ void Conference::conf_adm_edit(int numb) {
 	cout << "  [Редактирование данных администратора]" << endl << "  [Если поле не требуется редактировать - оставьте его пустым и нажмите enter]" << endl << "    ФИО: ";
 	getline(cin, name);	//???
 	getline(cin, name);
+	name = checkNames(name);
 	if (name != empty)	a_pointer[numb - 1].setName(name);
-	//проверка на только буквы ?
 	cout << "    Должность: ";
 	getline(cin, position);
 	if (position != empty)	a_pointer[numb - 1].setPosition(position);	
@@ -137,11 +142,13 @@ void Conference::conf_pr_edit(int numb) {
 	string day, time, topic, empty = "";
 
 	cout << "  [Редактирование блока программы]" << endl << "  [Если поле не требуется редактировать - оставьте его пустым и нажмите enter]" << endl << "    День: ";
+	//getline(cin, day);
 	getline(cin, day);
-	getline(cin, day);
+	day = checkDate();
 	if (day != empty)	p_pointer[numb - 1].setDay(day);
 	cout << "    Время: ";
-	getline(cin, time);
+	//getline(cin, time);
+	time = checkTime();
 	if (time != empty)	p_pointer[numb - 1].setTime(time);
 	cout << "    Наименование (тема): ";
 	getline(cin, topic);
@@ -241,9 +248,8 @@ void Conference::conf_pr_add() {
 }
 
 //вывод полного списка выступающих
-void Conference::conf_sp_full_output() {	//добавить сртировку по фамилиям?
+void Conference::conf_sp_full_output() {
 	for (int i = 0; i <= s_numb - 1; i++) {
-		//ПЕРЕД ДОБАВЛЕНИЕМ ФУНКЦИИ ПРОПИСАТЬ ДОП ENDL
 		cout << " - Выступающий " << i+1 << ":" << endl;
 		cout << "    ФИО: " << s_pointer[i].getName() << endl;
 		cout << "    Организация/ВУЗ: " << s_pointer[i].getOrganization() << endl;
@@ -252,9 +258,8 @@ void Conference::conf_sp_full_output() {	//добавить сртировку по фамилиям?
 	}
 }
 //вывод полного списка администраторов
-void Conference::conf_adm_full_output() {	//добавить сртировку по фамилиям?
+void Conference::conf_adm_full_output() {
 	for (int i = 0; i <= a_numb - 1; i++) {
-		//ПЕРЕД ДОБАВЛЕНИЕМ ФУНКЦИИ ПРОПИСАТЬ ДОП ENDL
 		cout << " - Администратор " << i + 1 << ":" << endl;
 		cout << "    ФИО: " << a_pointer[i].getName() << endl;
 		cout << "    Должность: " << a_pointer[i].getPosition() << endl;
@@ -262,9 +267,8 @@ void Conference::conf_adm_full_output() {	//добавить сртировку по фамилиям?
 	}
 }
 //вывод полного списка программы
-void Conference::conf_pr_full_output() {	//добавить сртировку по времени?
+void Conference::conf_pr_full_output() {
 	for (int i = 0; i <= p_numb - 1; i++) {
-		//ПЕРЕД ДОБАВЛЕНИЕМ ФУНКЦИИ ПРОПИСАТЬ ДОП ENDL
 		cout << " - Программный блок " << i + 1 << ":" << endl;
 		cout << "    День: " << p_pointer[i].getDay() << endl;
 		cout << "    Время: " << p_pointer[i].getTime() << endl;
@@ -276,7 +280,7 @@ void Conference::conf_add() {
 	string conf_name;
 	
 	cout << "[Создание конференции]" << endl << "  Название: ";
-	getline(cin, conf_name);		//с одним не работает
+	getline(cin, conf_name);
 	getline(cin, conf_name);
 	name = conf_name;
 

@@ -1,6 +1,11 @@
 #include "Keeper.h"
 #include <fstream>
-#include <cstdio>Inport conf.txt
+#include <cstdio>
+
+
+string checkNames(string input);
+string checkDate();
+string checkTime();
 
 Conference Conf;
 
@@ -15,15 +20,15 @@ void  Keeper::keep_export() {
 		fout.width(30);
 		fout << "Выступающие";
 		fout.width(2);
-		fout << keep_getS_numb() << "|";
+		fout << keep_s_a_p_numb(1) << "|";
 		fout.width(30);
 		fout << "Администрация";
 		fout.width(2);
-		fout << keep_getA_numb() << "|";
+		fout << keep_s_a_p_numb(2) << "|";
 		fout.width(30);
 		fout << "Блоки программы";
 		fout.width(2);
-		fout << keep_getP_numb() << "|";
+		fout << keep_s_a_p_numb(3) << "|";
 		fout << endl;
 		for (int i = 0; i < 99; i++) { fout << "_"; }
 		fout << endl << endl;
@@ -59,20 +64,24 @@ void  Keeper::keep_export() {
 		}
 
 		fout.close();
+		cout << "Данные сохранены в Export conf.txt" << endl;
 	}
 }
 
 void  Keeper::keep_import() {
 	string file_name;
+	cout << "Введите имя файла [формат имя.тип]: " << endl << "  ";
+	getline(cin, file_name);
+	getline(cin, file_name);
 	while (1) {
-		cout << "Введите имя файла: " << endl << "  ";
-		getline(cin, file_name);
-		getline(cin, file_name);
 		if (!(file_name.find(".txt") + 1 || file_name.find(".dat") + 1 || file_name.find(".csv") + 1)) { cout << "Неверный тип файла" << endl << "[.txt / .dat / .csv]" << endl; }
+		else if (file_name.length() >= 255 || file_name.length() <= 4) { cout << "Недопустимая длина имени файла" << endl; } 
+		else if ((file_name.find("<") + 1 )) { cout << "Недопустимые символы в имени файла" << endl; }
 		else break;
+		cout << "Введите имя файла [формат имя.тип]: " << endl << "  ";
+		getline(cin, file_name);
 	}
 	ifstream fin(file_name);		// вывод из файла
-	//FILE* file;
 	
 	if (!fin.is_open())										// если файл не открыт
 		cout << "Файл не может быть открыт!" << endl;		// сообщить об этом
@@ -81,6 +90,7 @@ void  Keeper::keep_import() {
 		if (!(fin.eof())) {
 			//getline(fin, buf);
 			getline(fin, buf);
+			buf = checkNames(buf);
 			//cout << buf << endl;
 			Conf.setName(buf);
 			getline(fin, buf);
@@ -281,16 +291,4 @@ int Keeper::keep_s_a_p_numb(int id) {
 		//cout << "id == 3" << endl;
 		return Conf.getP_numb();
 	}
-}
-
-int Keeper::keep_getS_numb() {
-	return Conf.getS_numb();
-}
-
-int Keeper::keep_getA_numb() {
-	return Conf.getA_numb();
-}
-
-int Keeper::keep_getP_numb() {
-	return Conf.getP_numb();
 }

@@ -1,6 +1,6 @@
 #include "Speakers.h"
 
-string checkNames();
+string checkNames(string input);
 
 void Speakers::s_input() {
 
@@ -8,11 +8,11 @@ void Speakers::s_input() {
 
 	cout << "  [Добавление выступающего]" << endl << "    ФИО: ";
 	getline(cin, s_name);	//???
-	//getline(cin, s_name);
-	name = checkNames();
+	getline(cin, s_name);
+	name = checkNames(s_name);
 	cout << "    Организация/ВУЗ: ";
-	//getline(cin, s_organization);
-	organization = checkNames();
+	getline(cin, s_organization);
+	organization = checkNames(s_name);
 	cout << "    Тема доклада: ";
 	getline(cin, s_topic);
 	topic = s_topic;

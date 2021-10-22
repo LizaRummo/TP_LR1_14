@@ -6,33 +6,11 @@ using namespace std;
 
 Keeper keep;
 
-
-
-int check() {
-	int input;
-	while (true) {
-		try
-		{
-			cin >> input;
-			if (!(cin.fail())) return input;
-			else throw "Некорректный ввод";
-		}
-		catch (const char*) {
-			cin.clear();
-			cerr << "Некорректный ввод. Повтороите ввод" << endl << "> ";
-		}
-		cin.ignore(32767, '\n');
-	}
-	return input;
-}
-
-string checkNames() {	//проверка для ввода, допускаются - и .
-	string input, res = "";
-	string buf = "";
-	while (true) {
+string checkNames(string input) {	//проверка для ввода, допускаются - и .
+	string buf = "", res = "";
+//	while (true) {
 			int length = 0;
 			//getline(cin, input);
-			getline(cin, input);
 			int first_letter = NULL, find_numb = 0;
 			length = input.length();
 			for (int i = 0; i <= length; i++) {
@@ -53,7 +31,7 @@ string checkNames() {	//проверка для ввода, допускаются - и .
 					}
 			}
 		return res;
-	}
+//	}
 	
 }
 
@@ -294,15 +272,15 @@ void statusbar() {
 	cout.width(30);
 	cout << "Выступающие";
 	cout.width(2);
-	cout << keep.keep_getS_numb() << "|";
+	cout << keep.keep_s_a_p_numb(1) << "|";
 	cout.width(30);
 	cout << "Администрация";
 	cout.width(2);
-	cout << keep.keep_getA_numb() << "|";
+	cout << keep.keep_s_a_p_numb(2) << "|";
 	cout.width(30);
 	cout << "Блоки программы";
 	cout.width(2);
-	cout << keep.keep_getP_numb() << "|";
+	cout << keep.keep_s_a_p_numb(3) << "|";
 	cout << endl;
 	for (int i = 0; i < 99; i++) { cout << "_"; }
 	cout << endl;
