@@ -42,7 +42,7 @@ string checkDate(string input) {
 	while (true) {
 		int length = 0, day, separator = 0;
 		//getline(cin, input);
-		getline(cin, input);
+		//getline(cin, input);
 		int first_letter = NULL, find_err = 0, ctr_err=0, correct=0;
 		length = input.length();
 		for (int i = 0; i <= length; i++) {
@@ -170,7 +170,7 @@ string checkTime(string input) {
 	while (true) {
 		int length = 0, hour=0, minute=0, separator = 0;
 		//getline(cin, input);
-		getline(cin, input);
+		//getline(cin, input);
 		int first_letter = NULL, find_err = 0, ctr_err = 0, correct = 0;
 		length = input.length();
 		for (int i = 0; i <= length; i++) {
@@ -427,7 +427,7 @@ int main() {
 		keep.keep_s_a_p_full_output(2);
 		keep.keep_s_a_p_full_output(3);
 		cout << "Нажмите любую клавишу, чтобы продолжить..." << endl;
-		cin.get(); cin.get();
+		cin.get(); //cin.get();
 	}
 	if (!(input)) {
 		keep.keep_add();

@@ -122,8 +122,8 @@ void  Keeper::keep_import() {
 						int j = 0;
 						pos = buf.find(findValue);
 						input.assign(buf, pos + 2, length);
-						if (i == 0) { sp.setName(input); /*cout << sp.getName();*/ input.clear(); }
-						if (i == 1) { sp.setOrganization(input); /*cout << sp.getOrganization();*/ input.clear(); }
+						if (i == 0) { input = checkNames(input);  sp.setName(input); /*cout << sp.getName();*/ input.clear(); }
+						if (i == 1) { input = checkNames(input); sp.setOrganization(input); /*cout << sp.getOrganization();*/ input.clear(); }
 						if (i == 2) { sp.setTopic(input); /*cout << sp.getTopic();*/ input.clear(); }
 						if (i == 3) { sp.setAnnotation(input); /*cout << sp.getAnnotation();*/ input.clear(); }
 						//cout << endl;
@@ -152,7 +152,7 @@ void  Keeper::keep_import() {
 						int j = 0;
 						pos = buf.find(findValue);
 						input.assign(buf, pos + 2, length);
-						if (i == 0) { adm.setName(input); /*cout << adm.getName();*/ input.clear(); }
+						if (i == 0) { input = checkNames(input); adm.setName(input); /*cout << adm.getName();*/ input.clear(); }
 						if (i == 1) { adm.setPosition(input); /*cout << adm.getPosition();*/ input.clear(); }
 						if (i == 2) { adm.setResponsibility(input); /*cout << adm.getResponsibility();*/ input.clear(); }
 						//cout << endl;
@@ -181,8 +181,8 @@ void  Keeper::keep_import() {
 						int j = 0;
 						pos = buf.find(findValue);
 						input.assign(buf, pos + 2, length);
-						if (i == 0) { pr.setDay(input); /*cout << pr.getDay();*/ input.clear(); }
-						if (i == 1) { pr.setTime(input); /*cout << pr.getTime();*/ input.clear(); }
+						if (i == 0) { input = checkDate(input); pr.setDay(input); /*cout << pr.getDay();*/ input.clear(); }
+						if (i == 1) { input = checkTime(input); pr.setTime(input); /*cout << pr.getTime();*/ input.clear(); }
 						if (i == 2) { pr.setTopic(input); /*cout << pr.getTopic();*/ input.clear(); }
 						//cout << endl;
 					}
