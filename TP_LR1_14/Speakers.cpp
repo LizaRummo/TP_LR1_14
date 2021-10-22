@@ -12,7 +12,7 @@ void Speakers::s_input() {
 	name = checkNames(s_name);
 	cout << "    Организация/ВУЗ: ";
 	getline(cin, s_organization);
-	organization = checkNames(s_name);
+	organization = checkNames(s_organization);
 	cout << "    Тема доклада: ";
 	getline(cin, s_topic);
 	topic = s_topic;

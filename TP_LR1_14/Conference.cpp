@@ -1,8 +1,8 @@
 #include "Conference.h"
 
 string checkNames(string input);
-string checkDate();
-string checkTime();
+string checkDate(string input);
+string checkTime(string input);
 int selection(int first, int last);
 
 Conference& Conference::operator=(const Conference& Conf)
@@ -142,13 +142,13 @@ void Conference::conf_pr_edit(int numb) {
 	string day, time, topic, empty = "";
 
 	cout << "  [Редактирование блока программы]" << endl << "  [Если поле не требуется редактировать - оставьте его пустым и нажмите enter]" << endl << "    День: ";
-	//getline(cin, day);
 	getline(cin, day);
-	day = checkDate();
+	getline(cin, day);
+	day = checkDate(day);
 	if (day != empty)	p_pointer[numb - 1].setDay(day);
 	cout << "    Время: ";
-	//getline(cin, time);
-	time = checkTime();
+	getline(cin, time);
+	time = checkTime(time);
 	if (time != empty)	p_pointer[numb - 1].setTime(time);
 	cout << "    Наименование (тема): ";
 	getline(cin, topic);

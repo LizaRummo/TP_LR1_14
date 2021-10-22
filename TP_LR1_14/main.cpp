@@ -8,8 +8,8 @@ Keeper keep;
 
 string checkNames(string input) {	//ïğîâåğêà äëÿ ââîäà, äîïóñêàşòñÿ - è .
 	string buf = "", res = "";
-//	while (true) {
-			int length = 0;
+	while (true) {
+		int length = 0, ctr_err = 0;
 			//getline(cin, input);
 			int first_letter = NULL, find_numb = 0;
 			length = input.length();
@@ -18,10 +18,11 @@ string checkNames(string input) {	//ïğîâåğêà äëÿ ââîäà, äîïóñêàşòñÿ - è .
 					(input[i] >= '/' && input[i] <= '@') ||
 					input[i] == '\0' || input[i] == '\n') {
 					if (!find_numb) {
-						buf.assign(input, first_letter, i);
+						buf.assign(input, first_letter, i - (res.length() + ctr_err));
 						res += buf;
 						first_letter = NULL;
 						find_numb = 1;
+						ctr_err++;
 					}
 				}
 				else
@@ -31,14 +32,13 @@ string checkNames(string input) {	//ïğîâåğêà äëÿ ââîäà, äîïóñêàşòñÿ - è .
 					}
 			}
 		return res;
-//	}
+	}
 	
 }
 
 //ïğîâåğêà äëÿ äàòû
-string checkDate() {	
-	string input, res = "";
-	string day_buf, month_buf, buf = "";
+string checkDate(string input) {
+	string day_buf, month_buf, buf = "", res = "";
 	while (true) {
 		int length = 0, day, separator = 0;
 		//getline(cin, input);
@@ -152,6 +152,7 @@ string checkDate() {
 			day <= 31 && (month_buf.find("ÿíâ") + 1 || month_buf.find("ìàğ") + 1 || month_buf.find("ìàé") + 1 || month_buf.find("ìàè") + 1
 				|| month_buf.find("èşë") + 1 || month_buf.find("àâã") + 1 || month_buf.find("îêò") + 1 || month_buf.find("äåê") + 1))
 		{
+			if (day_buf.length() == 1) res += "0";
 			res += day_buf;
 			res += ' ';
 			res += month_buf;
@@ -164,9 +165,8 @@ string checkDate() {
 }
 
 //ïğîâåğêà äëÿ âğåìåíè
-string checkTime() {	
-	string input, res = "";
-	string hour_buf, minute_buf, buf = "";
+string checkTime(string input) {
+	string hour_buf, minute_buf, buf = "", res = "";
 	while (true) {
 		int length = 0, hour=0, minute=0, separator = 0;
 		//getline(cin, input);

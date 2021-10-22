@@ -4,8 +4,8 @@
 
 
 string checkNames(string input);
-string checkDate();
-string checkTime();
+string checkDate(string input);
+string checkTime(string input);
 
 Conference Conf;
 
