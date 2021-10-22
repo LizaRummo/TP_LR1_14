@@ -155,7 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Export conf.txt" />
-    <Text Include="Inport conf.txt" />
+    <Text Include="Import conf.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -31,6 +31,13 @@ string checkNames(string input) {	//проверка для ввода, допускаются - и .
 						find_numb = 0;
 					}
 			}
+			/*length = res.length();
+			int space = 0;
+			for (int i = 0; i <= length; i++) {
+				if ((i = 0) && ((res[i] >= 'а' && res[i] <= 'я') || (res[i] >= 'a' && res[i] <= 'z'))) res[i] -= 32;
+				if (res[i] = ' ') space = 1;
+				if (space && (i != 0) && ((res[i] >= 'А' && res[i] <= 'Я') || (res[i] >= 'A' && res[i] <= 'Z'))) res[i] += 32;
+			}*/
 		return res;
 	}
 	

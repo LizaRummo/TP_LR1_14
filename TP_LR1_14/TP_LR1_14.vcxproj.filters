@@ -55,7 +55,7 @@
     <Text Include="Export conf.txt">
       <Filter>Исходные файлы</Filter>
     </Text>
-    <Text Include="Inport conf.txt">
+    <Text Include="Import conf.txt">
       <Filter>Исходные файлы</Filter>
     </Text>
   </ItemGroup>
