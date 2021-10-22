@@ -266,6 +266,14 @@ void Keeper::keep_s_a_p_edit(int id, int number) {
 		//cout << "id == 3" << endl;
 		Conf.conf_pr_edit(number);
 	}
+	if (id == 4) {
+		cout << "[Изменение назавния конференции]" << endl << "  Название: ";
+		string new_conf_name;
+		getline(cin, new_conf_name);
+		getline(cin, new_conf_name);
+
+		Conf.setName(checkNames(new_conf_name));
+	}
 }
 
 void Keeper::keep_add() {

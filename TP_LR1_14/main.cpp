@@ -298,6 +298,8 @@ void print_Menu_X() {
 	cout << "  4. Импорт данных" << endl;
 	cout << "  5. Экспорт данных" << endl;
 	cout << "  ---" << endl;
+	cout << "  6. Изменить навание конференции" << endl;
+	cout << "  ---" << endl;
 	cout << "  0. Выход из программы" << endl;
 	cout << "  >> ";
 }
@@ -375,7 +377,7 @@ void Menu_X() {
 	int point;
 	while (1) {
 		print_Menu_X();
-		switch (point = selection(0, 5)) {
+		switch (point = selection(0, 6)) {
 		case 1:
 		{
 			Menu_XX(point);
@@ -394,7 +396,6 @@ void Menu_X() {
 		case 4:
 		{
 			keep.keep_import();
-			cout << "Данные успешно загружены" << endl;
 			cout << "Нажмите любую клавишу, чтобы продолжить..." << endl;
 			cin.get(); cin.get();
 		}
@@ -405,6 +406,12 @@ void Menu_X() {
 			cout << "Данные успешно выгружены" << endl;
 			cout << "Нажмите любую клавишу, чтобы продолжить..." << endl;
 			cin.get(); cin.get();
+		}
+		break;
+		case 6:
+		{
+			//сменить название конфы
+			keep.keep_s_a_p_edit(4, 0);
 		}
 		break;
 		case 0:

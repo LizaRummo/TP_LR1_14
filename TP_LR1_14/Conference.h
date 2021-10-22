@@ -49,13 +49,9 @@ public:
 
 	//Conference& operator[](int index);
 	Conference& operator=(const Conference&);
-	string getName() { return name; }
-	void setName(string name) { this->name = name; }
 
-	void resetName(string new_name) { name = new_name; }
 	void conf_add();		//добавление конфиренции
 	//void conf_delete();	//удаление конфиренции
-	//void conf_edit();		//редактирование конфиренции
 
 	void conf_sort(int id);	//сортировка списка
 
@@ -63,7 +59,6 @@ public:
 	void conf_sp_del(int del_numb);	//удаление 
 	void conf_sp_edit(int numb);
 	void conf_sp_full_output();
-	//int getS_numb() { return s_numb; }
 
 	void conf_adm_add();
 	void conf_adm_del(int del_numb);
@@ -75,13 +70,15 @@ public:
 	void conf_pr_edit(int numb);
 	void conf_pr_full_output();
 
+	string getName() { return name; }
 	Speakers* getS_pointer() { return s_pointer; }
 	int getS_numb() { return s_numb; }
 	Administration* getA_pointer() { return a_pointer; }
 	int getA_numb() { return a_numb; }
 	Program* getP_pointer() { return p_pointer; }
 	int getP_numb() { return p_numb; }
-	
+
+	void setName(string name) { this->name = name; }
 	void setS_pointer (Speakers* s_pointer) { this->s_pointer = s_pointer; }
 	void setS_numb(int s_numb) { this->s_numb = s_numb; }
 	void setA_pointer(Administration* a_pointer) { this->a_pointer = a_pointer; }
