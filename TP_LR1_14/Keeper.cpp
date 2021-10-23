@@ -10,29 +10,26 @@ string checkTime(string input);
 Conference Conf;
 
 void  Keeper::keep_export() {
-	ofstream fout("Export conf.txt");		// запись в файл
+	string file_name;
+	cout << "Введите имя файла [формат имя.тип]: " << endl << "  ";
+	getline(cin, file_name);
+	getline(cin, file_name);
+	while (1) {
+		if (!(file_name.find(".txt") + 1 || file_name.find(".dat") + 1 || file_name.find(".csv") + 1)) { cout << "Неверный тип файла" << endl << "[.txt / .dat / .csv]" << endl; }
+		else if (file_name.length() >= 255 || file_name.length() <= 4) { cout << "Недопустимая длина имени файла" << endl; }
+		else if ((file_name.find("<") + 1)) { cout << "Недопустимые символы в имени файла" << endl; }
+		else break;
+		cout << "Введите имя файла [формат имя.тип]: " << endl << "  ";
+		getline(cin, file_name);
+	}
+	ofstream fout(file_name);		// запись в файл
 	if (!fout.is_open())										// если файл не открыт
 		cout << "Файл не может быть открыт!" << endl;		// сообщить об этом
 	else {
 		
 		fout << keep_getName_of_conf(); //сделать принудительно капсом?
 		fout << endl << endl;
-		fout.width(30);
-		fout << "Выступающие";
-		fout.width(2);
-		fout << keep_s_a_p_numb(1) << "|";
-		fout.width(30);
-		fout << "Администрация";
-		fout.width(2);
-		fout << keep_s_a_p_numb(2) << "|";
-		fout.width(30);
-		fout << "Блоки программы";
-		fout.width(2);
-		fout << keep_s_a_p_numb(3) << "|";
-		fout << endl;
-		for (int i = 0; i < 99; i++) { fout << "_"; }
-		fout << endl << endl;
-
+		
 		Conf.conf_sort(1);
 		Speakers* s_pointer = Conf.getS_pointer();
 		for (int i = 0; i <= Conf.getS_numb() - 1; i++) {
@@ -64,7 +61,7 @@ void  Keeper::keep_export() {
 		}
 
 		fout.close();
-		cout << "Данные сохранены в Export conf.txt" << endl;
+		cout << "Данные сохранены в " << file_name << endl;
 	}
 }
 
@@ -88,9 +85,9 @@ void  Keeper::keep_import() {
 	else {
 		string buf, empty = "";
 		if (!(fin.eof())) {
-			//getline(fin, buf);
 			getline(fin, buf);
-			buf = checkNames(buf);
+			getline(fin, buf);
+			//buf = checkNames(buf);
 			//cout << buf << endl;
 			Conf.setName(buf);
 			getline(fin, buf);
